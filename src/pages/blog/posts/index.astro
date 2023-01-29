@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+---
+
+<div>
+  {
+    posts.slice(0, 3).map((post) => (
+      <article>
+        <h1>{post.data.title}</h1>
+        <p>{post.data.requiredValue}</p>
+      </article>
+    ))
+  }
+</div>

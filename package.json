@@ -11,11 +11,12 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.15.1",
     "accessible-astro-components": "^1.6.1",
+    "astro": "^2.0.2",
     "astro-icon": "^0.7.3"
   },
   "devDependencies": {
-    "astro": "^1.6.3",
     "sass": "^1.49.9"
   }
 }

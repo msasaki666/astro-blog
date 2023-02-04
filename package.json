@@ -1,9 +1,8 @@
 {
-  "name": "accessible-astro-starter",
-  "description": "An Accessible Starter Theme for Astro including several accessiblity features and tools to help you build faster.",
+  "name": "astro-blog",
+  "description": "Web Site built with [accessible-astro-starter](https://accessible-astro.dev).",
   "version": "1.6.2",
-  "author": "Mark Teekman",
-  "homepage": "https://accessible-astro.dev",
+  "author": "Motoaki Sasaki",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

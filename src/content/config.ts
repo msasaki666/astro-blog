@@ -7,7 +7,14 @@ const postCollection = defineCollection({
   }),
 });
 
+const pageCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
 export const collections = {
   // キーをcollectionのディレクトリ名と合わせる
   posts: postCollection,
+  pages: pageCollection,
 };

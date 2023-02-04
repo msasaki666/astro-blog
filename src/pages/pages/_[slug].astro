@@ -1,25 +1,31 @@
 ---
 import DefaultLayout from '../../layouts/DefaultLayout.astro'
 import { Breadcrumbs, BreadcrumbsItem } from 'accessible-astro-components'
+import { getCollection, CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  const data = await fetch('https://jsonplaceholder.typicode.com/posts').then(response => response.json())
+const pages = await getCollection('pages');
 
-  return data.map((post) => {
+  return pages.map((page) => {
     return {
-      params: { post: post.title.replaceAll(' ', '-').toLowerCase() },
-      props: { post }
+      params: { slug: page.slug },
+      props: { page }
     }
   })
 }
 
-const { post } = Astro.props
+interface Props {
+  page: CollectionEntry<'pages'>;
+}
+
+const { page } = Astro.props
+const { Content } = await page.render();
 ---
 
 <DefaultLayout
-  title={post.title}
-  description={post.body}
-  url={post.title}
+  title={page.data.title}
+  description={page.body}
+  url={page.data.title}
 >
   <div class="container margin-24">
     <Breadcrumbs>
@@ -33,19 +39,20 @@ const { post } = Astro.props
       />
       <BreadcrumbsItem
         currentPage={true}
-        label={post.title}
+        label={page.data.title}
       />
     </Breadcrumbs>
   </div>
   <section class="margin-48">
     <div class="container">
-      <h1>{post.title}</h1><br>
-      <p>By userId: {post.userId}</p>
+      <h1>{page.data.title}</h1><br>
+      <p>By userId: {"page.userId"}</p>
     </div>
   </section>
   <section class="margin-48">
     <div class="container">
-      <p class="size-20">{post.body}</p>
+      <!-- <p class="size-20">{page.body}</p> -->
+      <Content></Content>
     </div>
   </section>
 </DefaultLayout>

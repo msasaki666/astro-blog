@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+
+const pages = await getCollection('pages');
+---
+
+<div>
+  {
+    pages.slice(0, 3).map((page) => (
+      <article>
+        <h1>{page.data.title}</h1>
+        <p>{page.body}</p>
+      </article>
+    ))
+  }
+</div>
